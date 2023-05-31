@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<project name="Reading Server" default="build" basedir=".">
+
+    <property name="sourcedir" value="src" />
+    <property name="outdir" value="bin" />
+
+
+    <target name="build">
+        <mkdir dir="${outdir}" />
+        <javac srcdir="${sourcedir}" destdir="${outdir}" classpath="" />
+    </target>
+
+    <target name="clean">
+        <delete dir="${outdir}" />
+    </target>
+</project>
