@@ -1,6 +1,13 @@
 package garpin.design_patterns.abstract_factory;
 
-public interface WriterFactory
+public abstract class WriterFactory
 {
-    public Writer getAsciiWriter();
+    public abstract Writer getAsciiWriter();
+
+    public static WriterFactory getFactory(String type) throws Exception
+    {
+        String className = System.getProperty("writerFactory.plain");
+
+        return (WriterFactory)Class.forName(className).getDeclaredConstructor().newInstance();
+    }
 }

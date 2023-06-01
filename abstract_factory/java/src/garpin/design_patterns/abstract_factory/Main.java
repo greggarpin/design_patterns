@@ -9,11 +9,18 @@ public class Main
             System.exit(1);
         }
 
-        String outString = args[0];
+        try {
+            init();
 
-        WriterFactory factory = new PlainWriterFactory();
+            String outString = args[0];
 
-        writeString(outString, factory);
+            WriterFactory factory = WriterFactory.getFactory("plain");
+
+            writeString(outString, factory);
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
     }
 
     private static void writeString(String outString, WriterFactory factory)
@@ -24,5 +31,12 @@ public class Main
     private static void showHelp()
     {
         System.out.println("Please provide an output string");
+    }
+
+    private static void init()
+    {
+        // Manually set properties here. Note that in a "real" (non-practice) project, these would come from
+        // some external resource (a config file, a database, etc.)
+        System.setProperty("writerFactory.plain", "garpin.design_patterns.abstract_factory.PlainWriterFactory");
     }
 }
