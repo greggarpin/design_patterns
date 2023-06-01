@@ -4,11 +4,25 @@ public class Main
 {
     public static void main(String[] args)
     {
-        writeString(args[0]);
+        if (args.length != 1) {
+            showHelp();
+            System.exit(1);
+        }
+
+        String outString = args[0];
+
+        WriterFactory factory = new PlainWriterFactory();
+
+        writeString(outString, factory);
     }
 
-    private static void writeString(String outString)
+    private static void writeString(String outString, WriterFactory factory)
     {
-        System.out.println(outString);
+        factory.getAsciiWriter().write(outString);
+    }
+
+    private static void showHelp()
+    {
+        System.out.println("Please provide an output string");
     }
 }
