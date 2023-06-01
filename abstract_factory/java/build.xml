@@ -17,8 +17,34 @@
 
     <target name="run">
         <input message="Input user text" addproperty="user.input"/>
+        <input message="Input type ('plain', 'boxed' or 'caps')" addproperty="user.type"/>
         <java classname="${mainclass}" classpath="${outdir}">
             <arg value="${user.input}"/>
+            <arg value="${user.type}"/>
+        </java>
+    </target>
+
+    <target name="runPlain">
+        <input message="Input user text" addproperty="user.input"/>
+        <java classname="${mainclass}" classpath="${outdir}">
+            <arg value="${user.input}"/>
+            <arg value="plain"/>
+        </java>
+    </target>
+
+    <target name="runBoxed">
+        <input message="Input user text" addproperty="user.input"/>
+        <java classname="${mainclass}" classpath="${outdir}">
+            <arg value="${user.input}"/>
+            <arg value="boxed"/>
+        </java>
+    </target>
+
+    <target name="runCaps">
+        <input message="Input user text" addproperty="user.input"/>
+        <java classname="${mainclass}" classpath="${outdir}">
+            <arg value="${user.input}"/>
+            <arg value="caps"/>
         </java>
     </target>
 </project>
