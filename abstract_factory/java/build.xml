@@ -3,6 +3,7 @@
 
     <property name="sourcedir" value="src" />
     <property name="outdir" value="bin" />
+    <property name="mainclass" value="garpin.design_patterns.abstract_factory.Main" />
 
 
     <target name="build">
@@ -12,5 +13,12 @@
 
     <target name="clean">
         <delete dir="${outdir}" />
+    </target>
+
+    <target name="run">
+        <input message="Input user text" addproperty="user.input"/>
+        <java classname="${mainclass}" classpath="${outdir}">
+            <arg value="${user.input}"/>
+        </java>
     </target>
 </project>
